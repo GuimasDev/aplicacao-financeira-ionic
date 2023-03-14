@@ -1,3 +1,4 @@
+
 #container {
   text-align: center;
 
@@ -6,6 +7,8 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  padding: 4%;
 }
 
 #container strong {
@@ -24,4 +27,8 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-item {
+  margin: 3% 0;
 }

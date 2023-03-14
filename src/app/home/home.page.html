@@ -1,20 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">Aplicação financeira</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container" >
+    <ion-list>
+      <ion-item fill="floating">
+        <ion-label position="floating">Valor da aplicação</ion-label>
+        <ion-input [(ngModel)]="valorAplicacao" placeholder="Valor" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item fill="floating">
+        <ion-label position="floating">Taxa de juros(%)</ion-label>
+        <ion-input [(ngModel)]="taxaJuros" placeholder="Taxa" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item fill="floating">
+        <ion-label position="floating">Quantidade de meses</ion-label>
+        <ion-input [(ngModel)]="meses" placeholder="Meses" type="number"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Tipo de juros</ion-label>
+        <ion-select [(ngModel)]="tipoJuros" placeholder="Tipo de juros">
+          <ion-select-option value="simples">Simples</ion-select-option>
+          <ion-select-option value="composto">Composto</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    
+
+    <div class="ion-margin">
+      <ion-button (click)="bt_limpar()" shape="round" color="warning">Limpar</ion-button>
+      <ion-button (click)="bt_calcular()" shape="round" color="success">Calcular</ion-button>
+    </div>
+
+    <div class="ion-margin">
+      <ion-label position="fixed">Rendimento total</ion-label>
+      <ion-input [(ngModel)]="rendimentoTotal" style="text-align: center" value="100" type="number" readonly></ion-input>
+    </div>
   </div>
 </ion-content>
