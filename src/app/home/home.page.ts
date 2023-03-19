@@ -23,20 +23,26 @@ export class HomePage {
   }
 
   bt_calcular(): void {
-    //const calcularJurosSimples = (capital: number, taxa: number, meses: number) => capital * taxa * meses / 100;
-    
-    if (this.tipoJuros === "composto" || this.tipoJuros === "simples") {
-      alert(this.tipoJuros);
+    if (this.valorAplicacao > 0 && this.taxaJuros > 0 && this.meses > 0 && this.tipoJuros != undefined) {
+      let juros: number = 0;
       
+      if (this.tipoJuros === "composto"){
+        juros = this.calcularJurosComposto(this.valorAplicacao, this.taxaJuros, this.meses);
+      }else if(this.tipoJuros === "simples"){
+        juros = this.calcularJurosSimples(this.valorAplicacao, this.taxaJuros, this.meses);
+      }
+      this.rendimentoTotal = Number((this.valorAplicacao + juros).toFixed(2))
+    } else {
+      alert("Preencha todos os campos!")
     }
-    let juros = this.calcularJurosComposto(this.valorAplicacao, this.taxaJuros, this.meses);
-    this.rendimentoTotal = this.valorAplicacao + juros;
   }
 
   calcularJurosComposto(capital: number, taxa: number, meses: number): number {
-    let juros: number;
-    juros = (capital * ((1+(taxa/100)) ** meses)) - capital;
+    let juros = (capital * ((1+(taxa/100)) ** meses)) - capital;
     return Number(juros.toFixed(2));
   };
 
+  calcularJurosSimples(capital: number, taxa: number, meses: number): number {
+    return capital * taxa * meses / 100;
+  }
 }
